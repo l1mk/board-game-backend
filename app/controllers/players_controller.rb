@@ -8,13 +8,11 @@ class PlayersController < ApplicationController
         render json: player, include: [:records]
     end
     def create
-        players = Player.all
-        if players.exists?(name: params[:name].capitalize)
-        player = players.find_by(name: params[:name])
-        render json: player
+        player = Player.new(name: params[:name].capitalize, bio: params[:bio], favorite: params[:favorite])
+        if player.save
+            render json: player
         else 
-        player = Player.create(name: params[:name].capitalize, bio: params[:bio], favorite: params[:favorite])
-        render json: player
+            render json: {error: "Error creating account"}
         end
     end
     def update

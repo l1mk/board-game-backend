@@ -4,8 +4,8 @@ class CreatePlayers < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :bio
       t.string :favorite
-      t.integer :wins
-      t.integer :loses
+      t.integer :wins, default: 0
+      t.integer :loses, default: 0
 
       t.timestamps
     end
