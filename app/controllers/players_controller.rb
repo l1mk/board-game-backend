@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
         if player.save
             render json: player
         else 
-            render json: {error: "Error creating account"}
+            render json: {error: "Error creating player"}
         end
     end
     def update
@@ -22,8 +22,9 @@ class PlayersController < ApplicationController
         render json: player
     end
     def destroy
+        players = Player.all
         player = Player.find(params[:id])
         player.destroy
-        render json: player
+        render json: players
     end
 end
