@@ -6,7 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-player = Player.create(name: "Test")
-game = Game.create(title: "Game Test")
-record = Record.create(score: 999, player_id: 1, game_id: 1)
+# test seed
+player = Player.create(name: "zero", wins: 999, loses: 0)
+game = Game.create(turns: 999, player1: "red", player2: "blue", player3: "brock", player4: "misty" )
 
+#mandatory seed
+pikachu = Character.create(pokemon: "pikachu", attack: 0, defense: 0, speed: 1, luck: 0)
+eevee = Character.create(pokemon: "eevee", attack: 1, defense: 0, speed: 0, luck: 0)
+jigglypuff = Character.create(pokemon: "jigglypuff", attack: 0, defense: 1, speed: 0, luck: 0)
+togepi = Character.create(pokemon: "togepi", attack: 0, defense: 0, speed: 1, luck: 1.5)

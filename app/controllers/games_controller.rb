@@ -1,20 +1,26 @@
 class GamesController < ApplicationController
     def index
         games = Game.all 
-        render json: games, include: [:records]
+        render json: games
     end
-    def show
-        game = Game.find(params[:id])
-        render json: game, include: [:records]
-    end
+
     def create
-        games = Game.all
-        if games.exists?(title: params[:title])
-        game = games.find_by(title: params[:title])
+        game = Game.create(game_params)
         render json: game
-        else 
-        game = Game.create(title: params[:title])
-        render json: game
-        end
     end
+
+    def destroy
+        games = Game.all
+        game = Player.find(params[:id])
+        game.destroy
+        render json: games
+    end
+    
+    private
+
+    def game_params
+        params.require(:game).permit(:turns, :player1, :player2, :player3, :player4)
+    end
+
 end
+

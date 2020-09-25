@@ -12,32 +12,34 @@
 
 ActiveRecord::Schema.define(version: 2020_09_20_193810) do
 
+  create_table "characters", force: :cascade do |t|
+    t.string "pokemon"
+    t.integer "attack"
+    t.integer "defense"
+    t.integer "speed"
+    t.float "luck"
+    t.integer "experience", default: 0
+    t.integer "battlepoints", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "games", force: :cascade do |t|
-    t.string "title"
+    t.integer "turns"
+    t.string "player1"
+    t.string "player2"
+    t.string "player3"
+    t.string "player4"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.text "bio"
-    t.string "favorite"
     t.integer "wins", default: 0
     t.integer "loses", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "records", force: :cascade do |t|
-    t.integer "score"
-    t.integer "player_id", null: false
-    t.integer "game_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["game_id"], name: "index_records_on_game_id"
-    t.index ["player_id"], name: "index_records_on_player_id"
-  end
-
-  add_foreign_key "records", "games"
-  add_foreign_key "records", "players"
 end

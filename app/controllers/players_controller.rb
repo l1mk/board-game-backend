@@ -1,24 +1,30 @@
 class PlayersController < ApplicationController
     def index
         players = Player.all 
-        render json: players, include: [:records]
+        render json: players
     end
     def show
         player = Player.find(params[:id])
-        render json: player, include: [:records]
+        render json: player
     end
     def create
-        player = Player.new(name: params[:name].capitalize, bio: params[:bio], favorite: params[:favorite])
-        if player.save
+        players = Player.all
+            if players.exists?(name: params[:name].capitalize)
+            player = players.find_by(name: params[:name].capitalize)
             render json: player
-        else 
-            render json: {error: "Error creating player"}
-        end
+            else 
+            player = Player.new(name: params[:name].capitalize)
+                if player.save
+                render json: player
+                else 
+                render json: {error: "Error creating player"}
+                end
+            end
     end
     def update
         player = Player.find(params[:id])
-        new_records = player.records.push(params[:record])
-        player.update(records: new_records)
+        player.update(wins: params[:wins], loses: params[;loses])
+        player.save
         render json: player
     end
     def destroy
