@@ -23,7 +23,7 @@ class PlayersController < ApplicationController
     end
     def update
         player = Player.find(params[:id])
-        player.update(wins: params[:wins], loses: params[;loses])
+        player.update(wins: params[:wins], loses: params[:loses])
         player.save
         render json: player
     end
