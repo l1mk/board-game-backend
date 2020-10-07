@@ -11,7 +11,7 @@ class GamesController < ApplicationController
 
     def destroy
         games = Game.all
-        game = Player.find(params[:id])
+        game = Game.find(params[:id])
         game.destroy
         render json: games
     end
@@ -19,7 +19,7 @@ class GamesController < ApplicationController
     private
 
     def game_params
-        params.require(:game).permit(:turns, :player1, :player2, :player3, :player4)
+        params.require(:game).permit(:turns, :player1, :player2, :player3, :player4, :pokemon1, :pokemon2, :pokemon3, :pokemon4)
     end
 
 end

@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 2020_09_20_193810) do
     t.string "player2"
     t.string "player3"
     t.string "player4"
+    t.string "pokemon1"
+    t.string "pokemon2"
+    t.string "pokemon3"
+    t.string "pokemon4"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

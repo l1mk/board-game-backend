@@ -8,7 +8,7 @@
 
 # test seed
 player = Player.create(name: "zero", wins: 999, loses: 0)
-game = Game.create(turns: 999, player1: "red", player2: "blue", player3: "brock", player4: "misty" )
+game = Game.create(turns: 999, player1: "red", pokemon1: "charmander", player2: "blue", pokemon2: "squirtle", player3: "brock", pokemon3: "onix", player4: "misty", pokemon4: "staryu" )
 
 #mandatory seed
 pikachu = Character.create(pokemon: "pikachu", attack: 0, defense: 0, speed: 1, luck: 0)
