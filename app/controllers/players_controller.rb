@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+    require 'pry'
+
     def index
         players = Player.all 
         render json: players
@@ -23,7 +25,7 @@ class PlayersController < ApplicationController
     end
     def update
         player = Player.find(params[:id])
-        player.update(wins: params[:wins], loses: params[:loses])
+        player.update(wins: params["player"]["wins"])
         player.save
         render json: player
     end
